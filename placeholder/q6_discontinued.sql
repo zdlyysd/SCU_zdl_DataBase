@@ -1,0 +1,2 @@
+select productname,companyname,contactname from customer c, 'order' od, orderdetail ot, product p where c.id == od.customerid and od.id == ot.orderid and ot.productid == p.id and p.discontinued == 1 and not exists(select od2.orderdate from customer c2, 'order' od2, orderdetail ot2, product p2 where c2.id == od2.customerid and od2.id == ot2.orderid and ot2.productid == p2.id and p2.discontinued == 1 and p.id == p2.id and od2.orderdate < od.orderdate) order by productname;
+

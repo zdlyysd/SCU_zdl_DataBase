@@ -1,0 +1,1 @@
+ select group_concat(productname) as name from product p, orderdetail t, 'order' od, customer c where p.id == t.productid and t.orderid == od.id and c.id == od.customerid and companyname == 'Queen Cozinha' and date(orderdate)=='2014-12-25' order by p.id;
